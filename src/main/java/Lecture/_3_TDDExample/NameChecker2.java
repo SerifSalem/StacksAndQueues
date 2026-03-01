@@ -7,7 +7,6 @@ import java.util.ArrayList;
  */
 public class NameChecker2 {
 
-    // ArrayList to store the names
     private ArrayList<String> names;
 
     // Constructor - Initializes the list and adds sample names.
