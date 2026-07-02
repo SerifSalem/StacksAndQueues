@@ -1,25 +1,31 @@
 package Seminar.Scenario2_Queues;
 
 import java.util.LinkedList;
-import java.util.Collections;
+import java.util.Queue;
 
-// FirstNRC - Uses LinkedList and Collections.frequency()
 public class FirstNRC {
+
     public Character findFirstNonRepeating(String text) {
 
-        // Store characters in a LinkedList
-        LinkedList<Character> list = new LinkedList<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // toCharArray() converts the string into an array of characters
-        for (char ch : text.toCharArray()) {list.add(ch);}
+        int[] count = new int[256];
 
-        // Check each character in order
-        for (Character ch : list) {
-            // Count how many times this character appears
-            if (Collections.frequency(list, ch) == 1) {
-                return ch;}   // First non-repeating character
+        // Add characters to queue and count them
+        for (char ch : text.toCharArray()) {
+            queue.add(ch);
+            count[ch]++;
         }
-        // If none found
+
+        // Remove characters one by one from the queue
+        while (!queue.isEmpty()) {
+            char currentChar = queue.remove();
+
+            if (count[currentChar] == 1) {
+                return currentChar;
+            }
+        }
+
         return null;
     }
 }

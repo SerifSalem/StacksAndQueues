@@ -2,37 +2,29 @@ package Seminar.Scenario1_Stacks;
 
 import java.util.Scanner;
 
-// Main program to test string reversal and palindrome check using a Stack.
+// StackApp - Application class for user interaction
 public class StackApp {
 
     public static void main(String[] args) {
 
-        // Create Scanner object to read user input
-        Scanner in = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
-        // Prompt user
         System.out.print("Enter a string: ");
-        String input = in.nextLine();
+        String original = input.nextLine();
 
-        // Create Stacks object
         Stacks tool = new Stacks();
 
-        // Reverse the string using the stack
-        String reversed = tool.reverse(input);
+        String reversed = tool.reverseString(original);
 
-        // Display results
-        System.out.println("Original: " + input);
-        System.out.println("Reversed: " + reversed);
+        System.out.println("Original string: " + original);
+        System.out.println("Reversed string: " + reversed);
 
-        // Palindrome check - Simple comparison (case-sensitive, includes spaces)
-        if (input.equals(reversed)) {
-            System.out.println("\"" + input + "\" is a palindrome");
+        if (tool.isPalindrome(original)) {
+            System.out.println(original + " is a palindrome");
         } else {
-            System.out.println("\"" + input + "\" is NOT a palindrome");
+            System.out.println(original + " is not a palindrome");
         }
 
-        in.close();        // Close Scanner
+        input.close();
     }
 }
-
-

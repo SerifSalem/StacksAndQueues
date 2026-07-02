@@ -2,29 +2,32 @@ package Seminar.Scenario1_Stacks;
 
 import java.util.Stack;
 
-/* Stacks - This class demonstrates how a Stack can be used
- * to reverse a string using LIFO (Last In First Out). */
+// Stacks - Logic class for reversing a string and checking palindrome
 public class Stacks {
-    private Stack<Character> stack;        // Stack used internally to store characters
 
-    // Constructor - Creates an empty stack
-    public Stacks() {
-        stack = new Stack<>();
+    public String reverseString(String original) {
+
+        Stack<Character> stack = new Stack<>();
+
+        // Push each character onto the stack
+        for (int i = 0; i < original.length(); i++) {
+            stack.push(original.charAt(i));
+        }
+
+        String reversed = "";
+
+        // Pop each character from the stack to build the reversed string
+        while (!stack.empty()) {
+            reversed = reversed + stack.pop();
+        }
+
+        return reversed;
     }
 
-    /* reverse(String text) - Pushes each character of the input string onto the stack.
-     * Then pops them off to build the reversed string. */
-    public String reverse(String text) {
-        stack.clear();                       // Clear stack in case the method is reused
-        for (char ch : text.toCharArray()) { // Push each character onto the stack
-            stack.push(ch);
-        }
+    public boolean isPalindrome(String original) {
 
-        // Build reversed string by popping characters (LIFO)
-        StringBuilder reversed = new StringBuilder();
-        while (!stack.empty()) {
-            reversed.append(stack.pop());
-        }
-        return reversed.toString();
+        String reversed = reverseString(original);
+
+        return original.equals(reversed);
     }
 }
